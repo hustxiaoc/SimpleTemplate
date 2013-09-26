@@ -94,9 +94,7 @@ KISSY.add(function (S) {
             render:function(data){
                 return this.compile().call(this,S.mix(this.data,data));
             }
-    }, {ATTRS :{
-
-    }});
+    });
     return SimpleTemplate;
 });
 

@@ -100,9 +100,7 @@ KISSY.add('gallery/SimpleTemplate/1.0/index',function (S) {
             render:function(data){
                 return this.compile().call(this,S.mix(this.data,data));
             }
-    }, {ATTRS :{
-
-    }});
+    });
     return SimpleTemplate;
 });
 
