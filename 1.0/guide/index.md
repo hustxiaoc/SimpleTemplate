@@ -21,6 +21,16 @@ SimpleTemplate是一个简单轻量的前端模板引擎,模板语法才有原�
      left:模板左分隔符 optional default {{
      right:模板右分隔符 optional default }}
      data:需要渲染的数据  optional
+    helper外部函数对象
+    例如
+    {
+          handleBigNumber:function(str){
+                return (''+str).replace( /\B(?=(?:\d{3})+$)/g, ',');
+          }
+    }
+    handleBigNumber函数用于转化大数字，比如12345->12,345
+    那么在模板中就可以直接这么用  {{ = handleBigNumber(number) }}
+    
      
 ### render(data)
     根据所传data渲染出html代码
