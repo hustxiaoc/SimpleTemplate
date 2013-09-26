@@ -62,7 +62,6 @@ KISSY.add(function (S) {
                 this.tpl=options.tpl;
                 this.left=options.left||default_config.left;
                 this.right=options.right||default_config.right;
-                this.debug=options.debug;
                 this.body=[];
                 this.__lines={};
                 this.compiled=null;
