@@ -1,0 +1,14 @@
+{
+    "name": "SimpleTemplate",
+    "version": "1.0",
+    "desc": "",
+    "cover": "",
+    "tag":"template,SimpleTemplate",
+    "author": {
+        "name": "淘杰",
+        "email": "taojie.hjp@taobao.com",
+        "page": ""
+    },
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}

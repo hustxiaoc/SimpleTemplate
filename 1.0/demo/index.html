@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>SimpleTemplate的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.3.0/kissy-min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/css/dpl/base-min.css">
+</head>
+<body>
+<style type="text/css">
+.tpl{display: none;}
+</style>
+<h2>SimpleTemplate的demo</h2>
+<textarea id="tpl-1" class="tpl">
+<h1>SimpleTemplate</h1>
+{{ for(var i=0;i<@itemList.length;i++){ 
+   var item=@itemList[i];
+}}
+ <h3>{{ =item.title }}</h3>
+ <div><img src="{{=item.imageUrl}}_100x100.jpg"> </div>
+ <strong>{{ = handleSellOut(item.sellOut) }}</strong>
+{{ }}}
+</textarea>
+
+<script>
+var data={
+    "itemList": [
+        {
+            "currentQuantity": 284,
+            "imageUrl": "http://img01.taobaocdn.com/imgextra/i1/16175028289446745/T1sCuSFd8gXXXXXXXX_!!345046175-0-tejia.jpg",
+            "itemId": 22205047112,
+            "sellOut": 2935,
+            "status": 1,
+            "stdItemPriceStr": "236.00",
+            "stdPriceStr": "88.00",
+            "title": "气质小西装外套"
+        },
+        {
+            "currentQuantity": 194,
+            "imageUrl": "http://img01.taobaocdn.com/imgextra/i1/15837028162009500/T1sMi0FflXXXXXXXXX_!!1098035837-0-tejia.jpg",
+            "itemId": 21756547189,
+            "sellOut": 438,
+            "status": 1,
+            "stdItemPriceStr": "780.00",
+            "stdPriceStr": "88.00",
+            "title": "卡通活性防螨亲肤四件套"
+        },
+        {
+            "currentQuantity": 292,
+            "imageUrl": "http://img03.taobaocdn.com/imgextra/i3/18422028219325228/T1ogSWFahgXXXXXXXX_!!1604018422-0-tejia.jpg",
+            "itemId": 17924757776,
+            "sellOut": 1028,
+            "status": 1,
+            "stdItemPriceStr": "199.00",
+            "stdPriceStr": "95.00",
+            "title": "小霸王英语复读机 仅亏1天"
+        }
+    ]
+};
+    var S = KISSY,$=S.Node.all;
+    if (S.Config.debug) {
+        var srcPath = "../../../";
+        S.config({
+            packages:[
+                {
+                    name:"gallery",
+                    path:srcPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
+    }
+
+    S.use('gallery/SimpleTemplate/1.0/index', function (S, SimpleTemplate) {
+          var r=SimpleTemplate({
+             tpl:$('#tpl-1').val(),
+             left:'{{',
+             right:'}}'
+          },{
+            handleSellOut:function(str){
+                return (''+str).replace( /\B(?=(?:\d{3})+$)/g, ',');
+            }
+          }).render(data);
+          $('body').append(r);
+    })
+</script>
+</body>
+</html>
