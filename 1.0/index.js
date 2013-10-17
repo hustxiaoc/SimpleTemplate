@@ -50,7 +50,7 @@ KISSY.add(function (S) {
                     }
                     else {
                         self.__lines[i]=v;
-                        self.body.push('\ttemp.push(this.__lines['+(i++)+']);\n');
+                        self.body.push('\ttemp.push($_this.__lines['+(i++)+']);\n');
                     }
                 });
                 return this.body.join("");
@@ -87,7 +87,7 @@ KISSY.add(function (S) {
                             }
                         }
                     }
-                    this.compiled=new Function("data",helpers.join(";")+';var temp=[];\n'+SimpleTemplate.parse.call(this)+'\n return temp.join("");');
+                    this.compiled=new Function("data",helpers.join(";")+';var temp=[],$_this=this;\n'+SimpleTemplate.parse.call(this)+'\n return temp.join("");');
                 }
                 return this.compiled;
             },
