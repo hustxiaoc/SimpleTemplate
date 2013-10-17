@@ -12,7 +12,7 @@
 </style>
 <h2>SimpleTemplate的demo</h2>
 <textarea id="tpl-1" class="tpl">
-<h1>SimpleTemplate</h1>
+<h1>for遍历</h1>
 {{ for(var i=0;i<@itemList.length;i++){ 
    var item=@itemList[i];
 }}
@@ -20,6 +20,12 @@
  <div><img src="{{=item.imageUrl}}_100x100.jpg"> </div>
  <strong>{{ = handleSellOut(item.sellOut) }}</strong>
 {{ }}}
+<h1>使用KISSY的each遍历</h1>
+{{ KISSY.each(@itemList,function(item){ }}
+    <h3>{{ =item.title }}</h3>
+    <div><img src="{{=item.imageUrl}}_100x100.jpg"> </div>
+    <strong>{{ = handleSellOut(item.sellOut) }}</strong>
+{{ }) }}
 </textarea>
 
 <script>
